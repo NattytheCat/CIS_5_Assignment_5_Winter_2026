@@ -1,122 +1,115 @@
 #include <iostream>
+#include<Iomanip>
 #include <string>
-#include <iomanip>
 
-using namespace std;
+using std::cout;
+using std::end;
+using std::string;
 
-// This is global variable, do not modify
-#define MAX_STUDENTS 5
 
 struct Student {
-	int studentId;
-	string studentName;
-	float studentGrades;
+    int id;
+    string name;
+    float grade;
 };
 
-/*!
-* Function Prototypes
-*/
-void printMenu();
-void highestGrade(Student students[], int count);
-void lowestGrade(Student students[], int count);
-void averageGrade(Student students[], int count);
-void printStudentId(Student students[], int count);
-void printStudentName(Student students[], int count);
+void highestGrade(Student students[], int size) {
+    float highest = students[0].grade;
+
+    for (int i = 1; i < size; i++) {
+        if (students[i].grade > highest) {
+            highest = students[i].grade;
+        }
+    }
+
+    cout << "Highest Grade: " << highest << endl;
+}
+
+void lowestGrade(Student students[], int size) {
+    float lowest = students[0].grade;
+
+    for (int i = 1; i < size; i++) {
+        if (students[i].grade < lowest) {
+            lowest = students[i].grade;
+        }
+    }
+
+    cout << "Lowest Grade: " << lowest << endl;
+}
+
+void averageGrade(Student students[], int size) {
+    float total = 0;
+
+    for (int i = 0; i < size; i++) {
+        total += students[i].grade;
+    }
+
+    cout << "Average Grade: " << total / size << endl;
+}
+
+void printStudentId(Student students[], int size) {
+    cout << "Student IDs:" << endl;
+
+    for (int i = 0; i < size; i++) {
+        cout << students[i].id << endl;
+    }
+}
+
+void printStudentName(Student students[], int size) {
+    cout << "Student Names:" << endl;
+
+    for (int i = 0; i < size; i++) {
+        cout << students[i].name << endl;
+    }
+}
 
 int main() {
-	Student students[MAX_STUDENTS];
-	int count = 0;  // this keeps track of the students that are in the class
-	int choice;     // user input
+    // Create an array of 5 students using a constructor
+    Student students[5] = {
+        Student("Jessica Smith", 2231460, 92.8.),
+        Student("Andrew Cunningham", 2914873, 73.5),
+        Student("Ryan Adolphus", 2615780, 98.9),
+        Student("Ronald Britton", 2114787, 70.8),
+        Student("Steven Lexington", 206475, 88.9)
+    };
+    int count = 5;
 
-	/*!
-	* Add the students here!
-	*/
-	//----------------------------------------------------------------------------------------
+    int choice;
+    do {
+        cout << "\n Options for The Menu:\n";
+        cout << "1. Highest Grade\n";
+        cout << "2. Lowest Grade\n";
+        cout << "3. Average Grade\n";
+        cout << "4. Printing of Student IDs\n";
+        cout << "5. Printing of Student Names\n";
+        cout << "6. Exit\n";
+        cout << "Please Enter choice: ";
+        cin >> choice;
 
+        switch (choice) {
+            case 1:
+                highestGrade(students, 5);
+                break;
+            case 2:
+                lowestGrade(students, 5);
+                break;
+            case 3:
+                averageGrade(students, 5);
+                break;
+            case 4:
+                printStudentId(students, 5);
+                break;
+            case 5:
+                printStudentName(students, 5);
+                break;
+            case 6:
+                cout << "Exiting program." << endl;
+                break;
+            default:
+                cout << "Invalid choice." << endl;
+        }
 
+    } while (choice != 6);
 
-
-
-
-
-
-
-	//----------------------------------------------------------------------------------------
-
-	// Complete the menu with the associated function
-	do {
-		printMenu();
-		cout << "Enter your choice: ";
-		cin >> choice;
-		cin.ignore();  // we add this to consume the leftover newline
-
-		switch (choice) {
-		case 1:
-			highestGrade(students, count);
-			break;
-		case 2:
-			lowestGrade(students, count);
-			break;
-		case 3:
-			averageGrade(students, count);
-			break;
-		case 4:
-			printStudentId(students, count);
-			break;
-		case 5:
-			printStudentName(students, count);
-			break;
-		case 6:
-			cout << "Goodbye!\n";
-			break;
-		default:
-			cout << "Invalid choice. Please try again.\n";
-		}
-	} while (choice != 6);
-
-	return 0;
-}
-
-void printMenu() {
-	cout << "\n=== Student Record System ===\n";
-	cout << "1. Find student with the highest grade\n";
-	cout << "2. Find the student with the lowest grade\n";
-	cout << "3. Find the average grade in the class\n";
-	cout << "4. Print all the student's ID\n";
-	cout << "5. Print all the student's names\n";
-	cout << "6. Exit\n";
-}
-
-/* TODO: Implement these functions */
-
-// Remeber, if you pass an array into a function, it is a pass by reference!
-// Because arrays decay to pointers, so you are getting a pointer to the first element
-// which allows you to modify the data. 
-
-void highestGrade(Student students[], int count)
-{
-	// TODO: Print out all the highest grade in the array
-
-	// Here is a simple check to ensure your code does not break
-	if (count == 0) {
-		cout << "No students in the record.\n";
-		return;
-	}
-}
-void lowestGrade(Student students[], int count)
-{
-	// TODO: Print out all the lowest grade in the array
-}
-
-void averageGrade(Student students[], int count)
-{
-	// TODO: Print out the average grade of the students
-}
-void printStudentId(Student students[], int count)
-{
-	// TODO: Print out all the students id in the array
-}
-void printStudentName(Student students[], int count)
-{
-	// TODO: Print out all the students name in the array
+    return 0;
 }
