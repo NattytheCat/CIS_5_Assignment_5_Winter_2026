@@ -28,3 +28,14 @@ I am not only grading for completion but for understanding as well, if you are u
 
 ## My Introduction Video
 https://share.icloud.com/photos/0dahOPYQEeP6onejOLQeIxqjg
+
+## My Week5 Notes
+
+![image](https://github.com/user-attachments/assets/c60dccf4-3c69-4c41-b9d0-0b2a4b7a97b2)
+
+![image](https://github.com/user-attachments/assets/808b25d2-6367-48ce-aeb8-e58e43e8fe60)
+
+![image](https://github.com/user-attachments/assets/0177d07a-68cf-4991-acd5-06d236679107)
+
+
+
